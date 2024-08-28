@@ -34,8 +34,13 @@ expected highlighting features  :
 ## Design 
 
 Complete freedom over :   
-    - Design system  
-    - Font   
-    - Colour Scheme  
-    - Layouting  
-    - Logo  
+ - Design system  
+ - Font   
+ - Colour Scheme  
+ - Layouting  
+ - Logo  
+
+Inspiration:  
+- Gamification design style
+- [holi.social](https://holi.social/)
+- [ui.dev](https://ui.dev)

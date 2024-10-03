@@ -1,29 +1,34 @@
 "use client";
 
 import React, { useEffect, useRef, useState } from "react";
+import consult from "../../public/consult.png";
+import tailoredSolution from "../../public/tailored-solution.png";
+import implementation from "../../public/implementation.png";
+import relax from "../../public/relax.png";
+
 import Image from "next/image";
 
 const steps = [
   {
     title: "Consult",
-    image: "/consult.png",
+    image: consult,
     description:
       "We start with a thorough consultation to understand your unique payroll needs.",
   },
   {
     title: "Tailor Plan",
-    image: "/tailored-solution.png",
+    image: tailoredSolution,
     description:
       "We create a customized plan that fits your specific requirements.",
   },
   {
     title: "Implementation",
-    image: "/implementation.png",
+    image: implementation,
     description: "Our expert team sets up and configures your chosen services.",
   },
   {
     title: "Relax",
-    image: "/relax.png",
+    image: relax,
     description: "Sit back and relax while we take care of your payroll needs.",
   },
 ];
@@ -67,7 +72,7 @@ export default function VerticalFlowchart() {
           {steps.map((step, index) => (
             <div
               key={index}
-              ref={(el) => (stepRefs.current[index] = el)}
+              //   ref={(el) => (stepRefs.current[index] = el)}
               className={`flex items-center mb-32 transition-all duration-300 ease-in-out ${
                 activeStep === index ? "scale-105" : ""
               }`}

@@ -8,7 +8,7 @@ import {
 } from "@/components/ui/card";
 import { Button } from "./ui/button";
 import { Briefcase, Users, Cog } from "lucide-react";
-import Tickmark from "./icons/tickmark";
+import Tickmark from "@/components/icons/Tickmark";
 
 export default function OurServices() {
   const services = [
@@ -87,7 +87,7 @@ export default function OurServices() {
             job.
           </p>
           <Button className="hover:bg-primary-foreground hover:text-secondary">
-            Let's Build Together
+            {`Let's Build Together`}
           </Button>
         </div>
       </div>

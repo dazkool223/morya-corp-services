@@ -4,6 +4,7 @@ import Navbar from "@/components/Navbar";
 import OurServices from "@/components/OurServices";
 import WhyChooseUs from "@/components/WhyChooseUs";
 import Process from "@/components/Process";
+import Footer from "@/components/Footer";
 export default function Home() {
   return (
     <main>
@@ -12,6 +13,7 @@ export default function Home() {
       <WhyChooseUs />
       <OurServices />
       <Process />
+      <Footer />
     </main>
   );
 }

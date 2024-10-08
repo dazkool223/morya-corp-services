@@ -41,7 +41,7 @@ export default function Navbar() {
         md:flex md:justify-center`}
     >
       <div
-        className={`container mx-auto px-4 md:px-0
+        className={`container mx-auto px-4 md:mx-2
         ${isScrolled ? "py-2" : "py-4"}
         md:max-w-3xl lg:max-w-4xl
         md:bg-white md:bg-opacity-90 md:rounded-full md:shadow-md

@@ -7,7 +7,7 @@ import heroIllustration from "../../public/hero-illustration.png";
 import Link from "next/link";
 const HeroSection = () => {
   return (
-    <section className="bg-primary-foreground pt-4">
+    <section className="bg-primary-foreground pt-10">
       <div className="container mx-auto px-4 py-10 lg:pl-32">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           {/* Left Column: Text Content */}

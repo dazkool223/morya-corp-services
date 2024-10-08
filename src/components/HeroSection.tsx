@@ -1,11 +1,13 @@
+"use client";
 import React from "react";
 
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import heroIllustration from "../../public/hero-illustration.png";
+import Link from "next/link";
 const HeroSection = () => {
   return (
-    <section className="bg-primary-foreground">
+    <section className="bg-primary-foreground pt-4">
       <div className="container mx-auto px-4 py-10 lg:pl-32">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           {/* Left Column: Text Content */}
@@ -19,8 +21,11 @@ const HeroSection = () => {
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4">
-              <Button className="bg-primary hover:bg-primary-foreground text-white hover:text-secondary">
-                Know More
+              <Button
+                asChild
+                className="bg-primary hover:bg-primary-foreground text-white hover:text-secondary"
+              >
+                <Link href="#about">Know More</Link>
               </Button>
             </div>
           </div>

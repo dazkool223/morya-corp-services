@@ -60,7 +60,10 @@ export default function VerticalFlowchart() {
   }, []);
 
   return (
-    <div className="py-16 bg-gradient-to-b from-background to-primary-foreground">
+    <section
+      id="process"
+      className="py-16 bg-gradient-to-b from-background to-primary-foreground"
+    >
       <div className="container mx-auto px-4 md:px-32">
         <h2 className="text-3xl text-primary md:text-4xl font-bold text-center mb-12">
           Our Process
@@ -120,7 +123,7 @@ export default function VerticalFlowchart() {
           ))}
         </div>
       </div>
-    </div>
+    </section>
   );
 }
 

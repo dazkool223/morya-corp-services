@@ -13,12 +13,12 @@ import Tickmark from "@/components/icons/Tickmark";
 export default function OurServices() {
   const services = [
     {
-      title: "Full-Time Employee Toolkit",
-      icon: <Briefcase className="w-10 h-10 text-primary" />,
+      title: "Service Provision Multitool",
+      icon: <Cog className="w-10 h-10 text-primary" />,
       list: [
-        "Customer-managed payroll system",
-        "Employee benefits administration",
-        "Comprehensive insurance management",
+        "Streamlined service delivery",
+        "End-to-end management by our experts",
+        "HR, Legal, and Accounting Swiss Army knife",
       ],
     },
     {
@@ -31,12 +31,12 @@ export default function OurServices() {
       ],
     },
     {
-      title: "Service Provision Multitool",
-      icon: <Cog className="w-10 h-10 text-primary" />,
+      title: "Full-Time Employee Toolkit",
+      icon: <Briefcase className="w-10 h-10 text-primary" />,
       list: [
-        "Streamlined service delivery",
-        "End-to-end management by our experts",
-        "HR, Legal, and Accounting Swiss Army knife",
+        "Customer-managed payroll system",
+        "Employee benefits administration",
+        "Comprehensive insurance management",
       ],
     },
   ];

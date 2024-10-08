@@ -5,7 +5,6 @@ import {
   Scale,
   BarChart,
   Building,
-  Shield,
   Clock,
   Users,
   Zap,
@@ -13,7 +12,7 @@ import {
 
 export default function WhyChooseUs() {
   return (
-    <section className="py-16 md:py-24 bg-primary-foreground">
+    <section id="about" className="py-16 md:py-24 bg-primary-foreground">
       <div className="container mx-auto px-4 md:px-6">
         <h2 className="text-3xl md:text-4xl text-primary font-bold text-center mb-12">
           Why Choose Us?

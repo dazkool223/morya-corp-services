@@ -1,66 +1,99 @@
 "use client";
-import { Menu } from "lucide-react";
-import { useState } from "react";
-const Navbar = () => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-  return (
-    <header className="bg-white shadow-md">
-      <div className="container mx-auto px-4 py-4">
-        <div className="flex items-center justify-between">
-          <div className="text-xl font-bold text-gray-800">
-            Morya Corp Services
-          </div>
-          <button
-            className="md:hidden"
-            onClick={() => setIsMenuOpen(!isMenuOpen)}
-            aria-label="Toggle menu"
-          >
-            <Menu className="h-6 w-6" />
-          </button>
-          <nav
-            className={`${
-              isMenuOpen ? "block" : "hidden"
-            } md:block absolute md:relative top-16 md:top-0 left-0 right-0 bg-white md:bg-transparent z-50`}
-          >
-            <ul className="flex flex-col md:flex-row space-y-2 md:space-y-0 md:space-x-4 p-4 md:p-0">
-              <li>
-                <a
-                  href="#about"
-                  className="text-gray-600 hover:text-gray-800 block"
-                >
-                  About
-                </a>
-              </li>
-              <li>
-                <a
-                  href="#services"
-                  className="text-gray-600 hover:text-gray-800 block"
-                >
-                  Services
-                </a>
-              </li>
-              <li>
-                <a
-                  href="#benefits"
-                  className="text-gray-600 hover:text-gray-800 block"
-                >
-                  Benefits
-                </a>
-              </li>
-              <li>
-                <a
-                  href="#contact"
-                  className="text-gray-600 hover:text-gray-800 block"
-                >
-                  Contact
-                </a>
-              </li>
-            </ul>
-          </nav>
-        </div>
-      </div>
-    </header>
-  );
-};
 
-export default Navbar;
+import React, { useState, useEffect } from "react";
+import { Menu, X } from "lucide-react";
+
+const navItems = [
+  { name: "About", href: "#about" },
+  { name: "Services", href: "#services" },
+  { name: "Process", href: "#process" },
+];
+
+export default function Navbar() {
+  const [isOpen, setIsOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
+  const [isVisible, setIsVisible] = useState(true);
+  const [lastScrollY, setLastScrollY] = useState(0);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+
+      if (currentScrollY > lastScrollY) {
+        setIsVisible(false);
+      } else {
+        setIsVisible(true);
+      }
+
+      setIsScrolled(currentScrollY > 50);
+      setLastScrollY(currentScrollY);
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [lastScrollY]);
+
+  return (
+    <nav
+      className={`fixed w-full transition-all duration-300 ease-in-out z-50
+        ${isVisible ? "top-0" : "-top-full"}
+        ${isScrolled ? "" : "bg-transparent"}
+        md:flex md:justify-center`}
+    >
+      <div
+        className={`container mx-auto px-4 md:px-0
+        ${isScrolled ? "py-2" : "py-4"}
+        md:max-w-3xl lg:max-w-4xl
+        md:bg-white md:bg-opacity-90 md:rounded-full md:shadow-md
+        transition-all duration-300 ease-in-out`}
+      >
+        <div className="flex items-center justify-between">
+          <div className="flex items-center">
+            <img
+              src="/placeholder.svg?height=40&width=40&text=Logo"
+              alt="Company Logo"
+              className="h-10 w-10 mr-3"
+            />
+            <span className="text-xl font-bold text-gray-800">
+              Morya Corp Services
+            </span>
+          </div>
+          <div className="md:hidden">
+            <button
+              onClick={() => setIsOpen(!isOpen)}
+              className="text-gray-500 hover:text-gray-600 focus:outline-none focus:text-gray-600"
+              aria-label="Toggle menu"
+            >
+              {isOpen ? <X size={24} /> : <Menu size={24} />}
+            </button>
+          </div>
+          <div className="hidden md:flex md:items-center md:space-x-6">
+            {navItems.map((item) => (
+              <a
+                key={item.name}
+                href={item.href}
+                className="text-gray-600 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium"
+              >
+                {item.name}
+              </a>
+            ))}
+          </div>
+        </div>
+        {isOpen && (
+          <div className="mt-4 bg-white md:hidden">
+            {navItems.map((item) => (
+              <a
+                key={item.name}
+                href={item.href}
+                className="block text-gray-600 hover:text-gray-900 px-3 py-2 rounded-md text-base font-medium"
+                onClick={() => setIsOpen(false)}
+              >
+                {item.name}
+              </a>
+            ))}
+          </div>
+        )}
+      </div>
+    </nav>
+  );
+}

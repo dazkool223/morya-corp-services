@@ -35,6 +35,7 @@ const HeroSection = () => {
             <div className="bg-white p-1 rounded-lg shadow-lg lg:w-5/6 lg:h-5/6">
               <Image
                 src={heroIllustration}
+                priority
                 height={200}
                 width={400}
                 alt="Payroll Dashboard"
@@ -47,8 +48,10 @@ const HeroSection = () => {
                 handle payroll"`}
               </p>
               <div className="flex items-center gap-2">
-                <p className="font-semibold text-gray-800">John Doe</p>
-                <p className="text-sm text-gray-500">CFO, TechCorp</p>
+                <p className="font-semibold text-gray-800">Nandini Rao</p>
+                <p className="text-sm text-gray-500">
+                  Head of Human Resources (HR)
+                </p>
               </div>
             </div>
           </div>

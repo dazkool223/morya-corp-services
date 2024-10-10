@@ -7,36 +7,41 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { Button } from "./ui/button";
-import { Briefcase, Users, Cog } from "lucide-react";
-import Tickmark from "@/components/icons/Tickmark";
+import { Briefcase, Users, Cog, Check } from "lucide-react";
 
 export default function OurServices() {
   const services = [
     {
-      title: "Service Provision Multitool",
-      icon: <Cog className="w-10 h-10 text-primary" />,
+      title: "Service Provision & Management",
+      description:
+        "An all-in-one service offering that covers areas like HR, legal, and accounting.",
+      icon: <Cog className="w-10 h-10 text-primary-foreground" />,
       list: [
-        "Streamlined service delivery",
-        "End-to-end management by our experts",
-        "HR, Legal, and Accounting Swiss Army knife",
+        "Streamlined service delivery with efficiency",
+        "End-to-end management by industry experts",
+        "Complete support to make in a versatile solution",
+      ],
+    },
+    {
+      title: "Full-Time Employee Provision",
+      description:
+        "Offering staffing solutions, where we provide employees for permanent roles in your organization.",
+      icon: <Briefcase className="w-10 h-10 text-primary-foreground" />,
+      list: [
+        "Client-controlled payroll systems",
+        "Employee benefits management",
+        "Complete insurance coverage for employees",
       ],
     },
     {
       title: "Contract Employee Compass",
-      icon: <Users className="w-10 h-10 text-primary" />,
+      description:
+        "Providing temporary or contract employees based on the company’s project needs.",
+      icon: <Users className="w-10 h-10 text-primary-foreground" />,
       list: [
         "Company-managed payroll solutions",
-        "HR services (PF, ESIC) navigation",
-        "Flexible staffing solution blueprints",
-      ],
-    },
-    {
-      title: "Full-Time Employee Toolkit",
-      icon: <Briefcase className="w-10 h-10 text-primary" />,
-      list: [
-        "Customer-managed payroll system",
-        "Employee benefits administration",
-        "Comprehensive insurance management",
+        "HR compliance & regulatory services (PF, ESIC)",
+        "Flexible staffing plans to scale up or down as needed",
       ],
     },
   ];
@@ -61,19 +66,22 @@ export default function OurServices() {
               className="bg-white/80 backdrop-blur-sm border-2 border-primary hover:border-secondary transition-all duration-300"
             >
               <CardHeader className="text-center">
-                <div className="w-20 h-20 mx-auto bg-primary-foreground rounded-full flex items-center justify-center mb-4">
+                <div className="w-20 h-20 mx-auto bg-primary rounded-full flex items-center justify-center mb-2">
                   {service.icon}
                 </div>
                 <CardTitle className="text-xl font-semibold text-foreground">
                   {service.title}
                 </CardTitle>
+                <CardDescription className="text-m font-light text-foreground">
+                  {service.description}
+                </CardDescription>
               </CardHeader>
               <CardContent>
                 <ul className="space-y-2 text-secondary-foreground">
                   {service.list?.map((item, idx) => (
-                    <li className="flex items-center" key={idx}>
-                      <Tickmark />
-                      {item}
+                    <li className="flex items-center gap-2" key={idx}>
+                      <Check className="aspect-square h-6 w-6 text-green-500" />
+                      <div className="font-normal">{item}</div>
                     </li>
                   ))}
                 </ul>

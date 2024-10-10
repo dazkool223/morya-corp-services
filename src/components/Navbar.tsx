@@ -2,6 +2,9 @@
 
 import React, { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
+import logo from "../../public/morya-white.png";
+
+import Image from "next/image";
 
 const navItems = [
   { name: "About", href: "#about" },
@@ -49,9 +52,11 @@ export default function Navbar() {
       >
         <div className="flex items-center justify-between">
           <div className="flex items-center">
-            <img
-              src="/placeholder.svg?height=40&width=40&text=Logo"
-              alt="Company Logo"
+            <Image
+              src={logo}
+              alt="Morya Corp Logo"
+              width={500}
+              height={500}
               className="h-10 w-10 mr-3"
             />
             <span className="text-xl font-bold text-gray-800">

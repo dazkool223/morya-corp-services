@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "@/app/ui/globals.css";
 import { inter } from "@/app/ui/fonts";
+import { FadeInSection } from "@/components/animations/fade-in";
 
 export const metadata: Metadata = {
   title: "Morya Corp Services",

@@ -9,122 +9,111 @@ import {
   Users,
   Zap,
 } from "lucide-react";
+import Link from "next/link";
+import { Button } from "./ui/button";
+import { FadeInSection } from "./animations/fade-in";
+
+const cardItems = [
+  {
+    title: "Payroll Management",
+    icon: FileText,
+    description:
+      "Streamlined handling of employee compensation, including salary calculation, tax deductions, and timely disbursement.",
+    span: "col-span-2",
+  },
+  {
+    title: "Regulatory Compliance",
+    icon: Scale,
+    description:
+      "Ensuring adherence to Provident Fund (PF) and Employee State Insurance (ESI) regulations for employee welfare.",
+    span: "col-span-2",
+  },
+  {
+    title: "Statutory Audit Support",
+    icon: BarChart,
+    description:
+      "Assistance in preparing and organizing financial records to ensure compliance with statutory audit requirements.",
+    span: "col-span-2 md:col-span-1",
+  },
+  {
+    title: "Staffing Solutions",
+    icon: Building,
+    description:
+      "End-to-end solutions for hiring, managing, and optimizing your workforce across all employment models—full-time, part-time, contract, and remote. Streamline administration, boost productivity, and ensure compliance with our comprehensive workforce management services.",
+    span: "col-span-2",
+  },
+  {
+    title: "MPCB Consent",
+    icon: Clock,
+    description:
+      "Facilitation of environmental compliance by obtaining Maharashtra Pollution Control Board approvals and consents.",
+    span: "col-span-2 md:col-span-1",
+  },
+  {
+    title: "CST Registration & Return",
+    icon: Users,
+    description:
+      "Assistance in Central Sales Tax (CST) registration, filing, and compliance with applicable regulations.",
+    span: "col-span-2",
+  },
+  {
+    title: "Factory Plan & License",
+    icon: Zap,
+    description:
+      "Expert services for designing factory layouts and acquiring necessary licenses to operate as per statutory requirements.",
+    span: "col-span-2",
+  },
+];
+
+const CardItem: React.FC<{
+  title: string;
+  icon: React.ComponentType<React.SVGProps<SVGSVGElement>>;
+  description: string;
+  span?: string;
+}> = ({ title, icon: Icon, description, span }) => (
+  <Card className={`bg-white border-primary ${span}`}>
+    <CardHeader>
+      <CardTitle className="flex items-center text-base font-bold text-secondary">
+        <Icon className="mr-2 text-primary" />
+        {title}
+      </CardTitle>
+    </CardHeader>
+    <CardContent>
+      <p className="text-secondary">{description}</p>
+    </CardContent>
+  </Card>
+);
 
 export default function WhyChooseUs() {
   return (
-    <section id="about" className="py-16 md:py-24 bg-primary-foreground">
-      <div className="container mx-auto px-4 md:px-6">
-        <h2 className="text-3xl md:text-4xl text-primary font-bold text-center mb-12">
-          Why Choose Us?
-        </h2>
+    <FadeInSection>
+      <section id="about" className="py-16 md:py-24 bg-primary-foreground">
+        <div className="container mx-auto px-4 md:px-6">
+          <h2 className="text-3xl md:text-4xl text-primary font-bold text-center mb-12">
+            Why Choose Us?
+          </h2>
 
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 max-w-6xl mx-auto">
-          {/* Comprehensive Solutions */}
-          <Card className="col-span-2 row-span-2 bg-blue-50 border-blue-200">
-            <CardHeader>
-              <CardTitle className="flex items-center text-xl font-semibold text-blue-700">
-                <FileText className="w-6 h-6 mr-2" />
-                Comprehensive Solutions
-              </CardTitle>
-            </CardHeader>
-            <CardContent>
-              <p className="text-blue-600">
-                All your payroll needs in one place—simplify with ease!
-              </p>
-            </CardContent>
-          </Card>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 max-w-6xl mx-auto">
+            {cardItems.map((item) => (
+              <CardItem
+                key={item.title}
+                title={item.title}
+                icon={item.icon}
+                description={item.description}
+                span={item.span}
+              />
+            ))}
+          </div>
 
-          {/* Customized Approach */}
-          <Card className="col-span-2 bg-green-50 border-green-200">
-            <CardHeader>
-              <CardTitle className="flex items-center text-lg font-semibold text-green-700">
-                <Scale className="w-5 h-5 mr-2" />
-                Customized Approach
-              </CardTitle>
-            </CardHeader>
-            <CardContent>
-              <p className="text-green-600">
-                Tailored solutions, built for your business.
-              </p>
-            </CardContent>
-          </Card>
-
-          {/* Cost-Effective */}
-          <Card className="bg-yellow-50 border-yellow-200">
-            <CardHeader>
-              <CardTitle className="flex items-center text-base font-semibold text-yellow-700">
-                <BarChart className="w-4 h-4 mr-2" />
-                Cost-Effective
-              </CardTitle>
-            </CardHeader>
-            <CardContent>
-              <p className="text-yellow-600">
-                Cut costs, not quality—boost your bottom line.
-              </p>
-            </CardContent>
-          </Card>
-
-          {/* Ideal for Startups and MSMEs */}
-          <Card className="bg-purple-50 border-purple-200">
-            <CardHeader>
-              <CardTitle className="flex items-center text-base font-semibold text-purple-700">
-                <Building className="w-4 h-4 mr-2" />
-                For Startups & MSMEs
-              </CardTitle>
-            </CardHeader>
-            <CardContent>
-              <p className="text-purple-600">
-                Scalable payroll solutions, no matter your size.
-              </p>
-            </CardContent>
-          </Card>
-
-          {/* Time-Saving */}
-          <Card className="bg-indigo-50 border-indigo-200">
-            <CardHeader>
-              <CardTitle className="flex items-center text-base font-semibold text-indigo-700">
-                <Clock className="w-4 h-4 mr-2" />
-                Time-Saving
-              </CardTitle>
-            </CardHeader>
-            <CardContent>
-              <p className="text-indigo-600">
-                Streamline your processes, save valuable time.
-              </p>
-            </CardContent>
-          </Card>
-
-          {/* Expert Support */}
-          <Card className="bg-pink-50 border-pink-200">
-            <CardHeader>
-              <CardTitle className="flex items-center text-base font-semibold text-pink-700">
-                <Users className="w-4 h-4 mr-2" />
-                Expert Support
-              </CardTitle>
-            </CardHeader>
-            <CardContent>
-              <p className="text-pink-600">
-                A dedicated team, always by your side.
-              </p>
-            </CardContent>
-          </Card>
-
-          {/* Innovative Technology */}
-          <Card className="col-span-2 bg-teal-50 border-teal-200">
-            <CardHeader>
-              <CardTitle className="flex items-center text-lg font-semibold text-teal-700">
-                <Zap className="w-5 h-5 mr-2" />
-                Innovative Technology
-              </CardTitle>
-            </CardHeader>
-            <CardContent>
-              <p className="text-teal-600">
-                Stay ahead with cutting-edge payroll and HR tech.
-              </p>
-            </CardContent>
-          </Card>
+          <div className="text-center mt-12">
+            <Link href="/services">
+              <Button className="hover:bg-primary-foreground hover:text-secondary">
+                Explore Our Services
+              </Button>
+            </Link>
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
+    </FadeInSection>
   );
 }

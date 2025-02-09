@@ -1,104 +1,158 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
-import { Menu, X } from "lucide-react";
-import logo from "../../public/morya-white.png";
-
+import * as React from "react";
 import Image from "next/image";
+import Link from "next/link";
+import { Menu, ChevronDown, ChevronRight } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import {
+  Sheet,
+  SheetContent,
+  SheetTrigger,
+  SheetTitle,
+  SheetDescription,
+  SheetHeader,
+} from "@/components/ui/sheet";
+import {
+  Collapsible,
+  CollapsibleContent,
+  CollapsibleTrigger,
+} from "@/components/ui/collapsible";
+import { cn } from "@/lib/utils";
+import logo from "../../public/logo.png";
 
-const navItems = [
-  { name: "About", href: "#about" },
-  { name: "Services", href: "#services" },
-  { name: "Process", href: "#process" },
+type MenuItem = {
+  title: string;
+  href: string;
+  submenu?: MenuItem[];
+};
+
+const menuItems: MenuItem[] = [
+  { title: "Home", href: "/" },
+  { title: "Services", href: "/services" },
+  { title: "Contact", href: "/contact" },
 ];
 
-export default function Navbar() {
-  const [isOpen, setIsOpen] = useState(false);
-  const [isScrolled, setIsScrolled] = useState(false);
-  const [isVisible, setIsVisible] = useState(true);
-  const [lastScrollY, setLastScrollY] = useState(0);
+const MenuItemComponent: React.FC<{
+  item: MenuItem;
+  depth?: number;
+  hamburger?: boolean;
+  onClick?: () => void;
+}> = ({ item, depth = 0, hamburger = false, onClick }) => {
+  const [isOpen, setIsOpen] = React.useState(false);
 
-  useEffect(() => {
-    const handleScroll = () => {
-      const currentScrollY = window.scrollY;
-
-      if (currentScrollY > lastScrollY) {
-        setIsVisible(false);
-      } else {
-        setIsVisible(true);
-      }
-
-      setIsScrolled(currentScrollY > 50);
-      setLastScrollY(currentScrollY);
-    };
-
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, [lastScrollY]);
+  if (item.submenu) {
+    return (
+      <Collapsible open={isOpen} onOpenChange={setIsOpen}>
+        <CollapsibleTrigger asChild>
+          <button
+            className={cn(
+              "flex w-full items-center justify-between py-2 text-lg font-medium transition-colors hover:text-primary",
+              depth > 0 && "pl-4"
+            )}
+          >
+            {item.title}
+            {isOpen ? (
+              <ChevronDown className="h-4 w-4" />
+            ) : (
+              <ChevronRight className="h-4 w-4" />
+            )}
+          </button>
+        </CollapsibleTrigger>
+        <CollapsibleContent>
+          {item.submenu.map((subItem) => (
+            <MenuItemComponent
+              key={subItem.title}
+              item={subItem}
+              depth={depth + 1}
+              onClick={onClick}
+            />
+          ))}
+        </CollapsibleContent>
+      </Collapsible>
+    );
+  }
 
   return (
-    <nav
-      className={`fixed w-full transition-all duration-300 ease-in-out z-50
-        ${isVisible ? "top-0" : "-top-full"}
-        ${isScrolled ? "" : "bg-transparent"}
-        md:flex md:justify-center`}
+    <Link
+      href={item.href}
+      className={cn(
+        `${
+          !hamburger && "flex"
+        } py-2 text-lg font-medium transition-colors hover:text-primary`,
+        depth > 0 && "pl-4",
+        item.href === "/" && "text-primary"
+      )}
+      onClick={onClick}
     >
-      <div
-        className={`container mx-auto px-4 md:mx-2
-        ${isScrolled ? "py-2" : "py-4"}
-        md:max-w-3xl lg:max-w-4xl
-        md:bg-white md:bg-opacity-90 md:rounded-full md:shadow-md
-        transition-all duration-300 ease-in-out`}
-      >
-        <div className="flex items-center justify-between">
-          <div className="flex items-center">
-            <Image
-              src={logo}
-              alt="Morya Corp Logo"
-              width={500}
-              height={500}
-              className="h-10 w-10 mr-3"
-            />
-            <span className="text-xl font-bold text-gray-800">
-              Morya Corp Services
-            </span>
-          </div>
-          <div className="md:hidden">
-            <button
-              onClick={() => setIsOpen(!isOpen)}
-              className="text-gray-500 hover:text-gray-600 focus:outline-none focus:text-gray-600"
-              aria-label="Toggle menu"
-            >
-              {isOpen ? <X size={24} /> : <Menu size={24} />}
-            </button>
-          </div>
-          <div className="hidden md:flex md:items-center md:space-x-6">
-            {navItems.map((item) => (
-              <a
-                key={item.name}
-                href={item.href}
-                className="text-gray-600 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium"
-              >
-                {item.name}
-              </a>
-            ))}
-          </div>
-        </div>
-        {isOpen && (
-          <div className="mt-4 bg-white md:hidden">
-            {navItems.map((item) => (
-              <a
-                key={item.name}
-                href={item.href}
-                className="block text-gray-600 hover:text-gray-900 px-3 py-2 rounded-md text-base font-medium"
-                onClick={() => setIsOpen(false)}
-              >
-                {item.name}
-              </a>
-            ))}
-          </div>
-        )}
-      </div>
+      {item.title}
+    </Link>
+  );
+};
+
+const NavbarElements: React.FC<{ styling?: String }> = () => {
+  return (
+    <nav className="hidden md:flex space-x-4">
+      {menuItems.map((item) => (
+        <MenuItemComponent key={item.title} item={item} />
+      ))}
     </nav>
+  );
+};
+
+const MobileNavbarElements: React.FC<{ onClick: () => void }> = ({
+  onClick,
+}) => {
+  return (
+    <nav className="flex flex-col space-y-4">
+      {menuItems.map((item) => (
+        <MenuItemComponent
+          key={item.title}
+          item={item}
+          hamburger
+          onClick={onClick}
+        />
+      ))}
+    </nav>
+  );
+};
+
+export default function Navbar() {
+  const [open, setOpen] = React.useState(false);
+
+  const handleClose = () => setOpen(false);
+
+  return (
+    <div className="bg-primary-foreground text-primary pt-4 pb-4 px-8 flex items-center justify-between">
+      {/* LOGO AND NAME */}
+      <Link className="flex items-center" href={"/"}>
+        <Image
+          src={logo}
+          alt="Morya Corp Logo"
+          width={500}
+          height={500}
+          className="h-10 w-10 mr-3"
+        />
+        <span className="text-xl font-bold text-gray-800">MORYA CORP</span>
+      </Link>
+      {/* DESKTOP SECTION */}
+      <NavbarElements />
+      {/* MOBILE SECTION */}
+      <Sheet open={open} onOpenChange={setOpen}>
+        <SheetHeader className="sr-only">
+          <SheetDescription>Description goes here</SheetDescription>
+          <SheetTitle>Menu</SheetTitle>
+        </SheetHeader>
+        <SheetTrigger asChild>
+          <Button variant="ghost" size="icon" className="md:hidden">
+            <Menu className="h-5 w-5" />
+            <span className="sr-only">Toggle menu</span>
+          </Button>
+        </SheetTrigger>
+        <SheetContent side="left" className="w-[240px] sm:w-[300px]">
+          <MobileNavbarElements onClick={handleClose} />
+        </SheetContent>
+      </Sheet>
+    </div>
   );
 }

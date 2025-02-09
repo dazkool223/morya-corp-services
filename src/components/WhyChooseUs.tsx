@@ -25,7 +25,7 @@ const cardItems = [
     title: "Regulatory Compliance",
     icon: Scale,
     description:
-      "Ensuring adherence to Provident Fund (PF) and Employee State Insurance (ESI) regulations for employee welfare.",
+      "Ensuring adherence to Provident Fund (PF), Employee State Insurance (ESI) and Professional Tax (PT) regulations for employee welfare.",
     span: "col-span-2",
   },
   {
@@ -39,7 +39,7 @@ const cardItems = [
     title: "Staffing Solutions",
     icon: Building,
     description:
-      "End-to-end solutions for hiring, managing, and optimizing your workforce across all employment models—full-time, part-time, contract, and remote. Streamline administration, boost productivity, and ensure compliance with our comprehensive workforce management services.",
+      "End-to-end solutions for hiring, managing, and optimizing your workforce across all employment models—full-time, contract, and remote. Streamline administration, boost productivity, and ensure compliance with our comprehensive management services.",
     span: "col-span-2",
   },
   {

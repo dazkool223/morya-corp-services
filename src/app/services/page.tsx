@@ -21,6 +21,7 @@ const services = [
       "Generation of pay slips and salary reports",
       "Management of bonuses, reimbursements, and other allowances",
       "Integration with time and attendance systems",
+      "Creating a well designed salary structure",
     ],
   },
   {
@@ -30,7 +31,7 @@ const services = [
     icon: Users,
     details: [
       "Talent acquisition services",
-      "Temporary and permanent staffing solutions",
+      "On-roll, contracts or third party payroll",
       "Workforce planning and optimization",
       "Performance management and employee development programs",
     ],
@@ -38,7 +39,7 @@ const services = [
   {
     title: "Regulatory Compliance",
     description:
-      "Ensuring adherence to Provident Fund (PF) and Employee State Insurance (ESI) regulations for employee welfare.",
+      "Ensuring adherence to Provident Fund (PF), Employee State Insurance (ESI) and Professional Tax (PT) regulations for employee welfare.",
     icon: Scale,
     details: [
       "Up-to-date compliance with changing labor laws",

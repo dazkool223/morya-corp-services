@@ -97,7 +97,7 @@ export default function PayrollToolbox() {
               job.
             </p>
             <Button className="hover:bg-primary-foreground hover:text-secondary">
-              Let's Build Together
+              {`Let's Build Together`}
             </Button>
           </div>
         </div>

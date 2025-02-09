@@ -115,7 +115,7 @@ export default function ServicesPage() {
         </section>
 
         {services.map((service, index) => (
-          <FadeInSection>
+          <FadeInSection key={index}>
             <React.Fragment key={index}>
               <section
                 className={`py-16 px-4 fade-in-section ${

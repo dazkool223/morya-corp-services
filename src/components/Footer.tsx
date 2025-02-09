@@ -20,8 +20,9 @@ export default function Footer() {
               className="mb-4"
             />
             <p className="text-sm text-muted-foreground mb-4">
-              Your company description goes here. This is a brief overview of
-              what your company does and its mission.
+              From recruitment and payroll to compliance and employee
+              development, Morya Corp Facility Private Limited simplifies HR so
+              you can focus on success! 🚀
             </p>
             <Button
               asChild
@@ -67,7 +68,7 @@ export default function Footer() {
               </p>
               <p className="flex items-center gap-2">
                 <Clock className="h-4 w-4" />
-                <span>Mon-Fri: 9AM-5PM</span>
+                <span>Mon-Sat: 9:30AM-6:30PM</span>
               </p>
             </address>
           </div>

@@ -21,7 +21,7 @@ export function FadeInSection({ children }: FadeInSectionProps) {
         }
       },
       {
-        threshold: 0.3, // Trigger when 30% of the element is visible
+        threshold: 0.15, // Trigger when 15% of the element is visible
       }
     );
 

@@ -29,9 +29,8 @@ const services = [
       "End-to-end solutions for hiring, managing, and optimizing your workforce across all employment models.",
     icon: Users,
     details: [
-      "Recruitment and talent acquisition services",
+      "Talent acquisition services",
       "Temporary and permanent staffing solutions",
-      "Contractor management and payrolling services",
       "Workforce planning and optimization",
       "Performance management and employee development programs",
     ],
@@ -43,7 +42,7 @@ const services = [
     icon: Scale,
     details: [
       "Up-to-date compliance with changing labor laws",
-      "Timely filing of PF and ESI returns",
+      "Timely filing of PF, ESI and PT returns",
       "Management of employee and employer contributions",
       "Assistance with regulatory audits and inspections",
     ],
@@ -73,16 +72,15 @@ const services = [
     ],
   },
   {
-    title: "CST Registration & Return",
+    title: "GST Registration & Return",
     description:
-      "Assistance in Central Sales Tax (CST) registration, filing, and compliance with applicable regulations.",
+      "Assistance in Goods and Service Tax (GST) registration, filing, and compliance with applicable regulations.",
     icon: Receipt,
     details: [
-      "Guidance on CST registration process",
-      "Preparation and filing of CST returns",
-      "Management of C-forms and other statutory forms",
-      "Assistance with CST assessments and audits",
-      "Regular updates on changes in CST regulations",
+      "Guidance on GST registration process",
+      "Preparation and filing of GST returns",
+      "Assistance with GST assessments and audits",
+      "Regular updates on changes in GST regulations",
     ],
   },
   {
@@ -151,7 +149,9 @@ export default function ServicesPage() {
                   </div>
                 </div>
               </section>
-              {index < services.length - 1 && <Separator className="my-12" />}
+              {index < services.length - 1 && (
+                <Separator asChild className="my-6" />
+              )}
             </React.Fragment>
           </FadeInSection>
         ))}

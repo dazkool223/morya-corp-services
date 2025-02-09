@@ -50,10 +50,10 @@ const cardItems = [
     span: "col-span-2 md:col-span-1",
   },
   {
-    title: "CST Registration & Return",
+    title: "GST Registration & Return",
     icon: Users,
     description:
-      "Assistance in Central Sales Tax (CST) registration, filing, and compliance with applicable regulations.",
+      "Assistance in Goods and Service Tax (GST) registration, filing, and compliance with applicable regulations.",
     span: "col-span-2",
   },
   {
@@ -86,13 +86,13 @@ const CardItem: React.FC<{
 
 export default function WhyChooseUs() {
   return (
-    <FadeInSection>
-      <section id="about" className="py-16 md:py-24 bg-primary-foreground">
-        <div className="container mx-auto px-4 md:px-6">
-          <h2 className="text-3xl md:text-4xl text-primary font-bold text-center mb-12">
-            Why Choose Us?
-          </h2>
+    <section id="about" className="py-16 md:py-24 bg-primary-foreground">
+      <div className="container mx-auto px-4 md:px-6">
+        <h2 className="text-3xl md:text-4xl text-primary font-bold text-center mb-12">
+          Why Choose Us?
+        </h2>
 
+        <FadeInSection>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 max-w-6xl mx-auto">
             {cardItems.map((item) => (
               <CardItem
@@ -104,16 +104,16 @@ export default function WhyChooseUs() {
               />
             ))}
           </div>
+        </FadeInSection>
 
-          <div className="text-center mt-12">
-            <Link href="/services">
-              <Button className="hover:bg-primary-foreground hover:text-secondary">
-                Explore Our Services
-              </Button>
-            </Link>
-          </div>
+        <div className="text-center mt-12">
+          <Link href="/services">
+            <Button className="hover:bg-primary-foreground hover:text-secondary">
+              Explore Our Services
+            </Button>
+          </Link>
         </div>
-      </section>
-    </FadeInSection>
+      </div>
+    </section>
   );
 }

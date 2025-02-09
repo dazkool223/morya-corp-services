@@ -48,19 +48,18 @@ export default function PayrollToolbox() {
   ];
 
   return (
-    <FadeInSection>
-      <section
-        id="services"
-        className="bg-gradient-to-b from-primary-foreground to-background py-16 md:py-24 relative overflow-hidden"
-      >
-        <div className="container mx-auto px-4 md:px-6 relative">
-          <h2 className="text-3xl md:text-4xl font-bold text-center mb-8 text-primary">
-            Our Payroll Toolbox
-          </h2>
-          <p className="text-xl text-center mb-12 text-gray-600">
-            Equipping your business with the right tools for success
-          </p>
-
+    <section
+      id="services"
+      className="bg-gradient-to-b from-primary-foreground to-background py-16 md:py-24 relative overflow-hidden"
+    >
+      <div className="container mx-auto px-4 md:px-6 relative">
+        <h2 className="text-3xl md:text-4xl font-bold text-center mb-8 text-primary">
+          Our Payroll Toolbox
+        </h2>
+        <p className="text-xl text-center mb-12 text-gray-600">
+          Equipping your business with the right tools for success
+        </p>
+        <FadeInSection>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12">
             {services.map((service, idx) => (
               <Card
@@ -91,17 +90,17 @@ export default function PayrollToolbox() {
               </Card>
             ))}
           </div>
-          <div className="mt-16 text-center">
-            <p className="text-xl text-secondary mb-6">
-              No matter the size of your project, we have the right tool for the
-              job.
-            </p>
-            <Button className="hover:bg-primary-foreground hover:text-secondary">
-              {`Let's Build Together`}
-            </Button>
-          </div>
+        </FadeInSection>
+        <div className="mt-16 text-center">
+          <p className="text-xl text-secondary mb-6">
+            No matter the size of your project, we have the right tool for the
+            job.
+          </p>
+          <Button className="hover:bg-primary-foreground hover:text-secondary">
+            {`Let's Build Together`}
+          </Button>
         </div>
-      </section>
-    </FadeInSection>
+      </div>
+    </section>
   );
 }

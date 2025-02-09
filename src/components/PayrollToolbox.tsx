@@ -9,6 +9,7 @@ import {
 import { Button } from "./ui/button";
 import { Briefcase, Users, Cog, Check } from "lucide-react";
 import { FadeInSection } from "./animations/fade-in";
+import Link from "next/link";
 
 export default function PayrollToolbox() {
   const services = [
@@ -96,9 +97,11 @@ export default function PayrollToolbox() {
             No matter the size of your project, we have the right tool for the
             job.
           </p>
-          <Button className="hover:bg-primary-foreground hover:text-secondary">
-            {`Let's Build Together`}
-          </Button>
+          <Link href={"/contact"}>
+            <Button className="hover:bg-primary-foreground hover:text-secondary">
+              {`Let's Build Together`}
+            </Button>
+          </Link>
         </div>
       </div>
     </section>
